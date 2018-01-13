@@ -27,6 +27,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    implementation files('/Users/guhan/Documents/BlockChain/BlockChain/MyApplication/jade.jar')
+//    implementation files('/Users/guhan/Documents/BlockChain/BlockChain/MyApplication/jade.jar')
     compile ('org.web3j:core:3.0.1-android')
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
 }
