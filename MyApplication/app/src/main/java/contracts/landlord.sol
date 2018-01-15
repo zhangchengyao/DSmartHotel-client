@@ -41,4 +41,20 @@ contract Landlord is User{
         introduction = _otherInfo[5];
         characteristic = _otherInfo[6];
     }
+
+    function createRoom (uint _roomId, uint _landlordId, string _roomType, uint _price,
+        uint _validStartTime, uint _validEndTime, uint _area, string _roomAddress) public {
+        address newRoom = new Room(_roomId, _landlordId, _roomType, _price, _validStartTime,
+            _validEndTime, _area, _roomAddress);
+        roomList.push(newRoom);
+        roomMapping[_roomId] = roomList[roomList.length - 1];
+    }
+
+    function createBid (uint _bidId, uint _tenantId, uint _landlordId, uint8 _result, uint _price,
+        uint[] _roomIds, uint _orderId, uint _score) public {
+        address newBid = new Bid(_bidId, _tenantId, _landlordId, _result, _price, _roomIds,
+            _orderId, _score);
+        bidList.push(newBid);
+        bidMapping[_bidId] = bidList[bidList.length - 1];
+    }
 }

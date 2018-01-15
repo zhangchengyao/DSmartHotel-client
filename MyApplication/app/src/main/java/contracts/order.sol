@@ -6,33 +6,32 @@ contract Order {
     uint public landlordId;
     uint public price;
     uint public createDate;
-    string public facilities;
-    string public roomType;
-    string public hotelType;
-    string public aroundSite;
+    bytes32 public facilities;
+    bytes32 public roomType;
+    bytes32 public hotelType;
+    bytes32 public aroundSite;
     uint public startTime;
     uint public leaveTime;
     uint public roomNum;
     // uint public point;
-    string public roomAddress;
+    bytes32 public roomAddress;
 
-    function Order(uint _orderId, uint _tenantId, uint _landlordId, uint _price, uint _createDate
-    , string _facilities, string _roomType,string _hotelType, string _aroundSite, uint _startTime,
-        uint _leaveTime, uint _roomNum, string _roomAddress) public {
+    function Order(uint _orderId, uint _tenantId, uint8 _roomNum, uint[] _otherIntInfo,
+        bytes32[] _otherStrInfo) public {
         orderId = _orderId;
         tenantId = _tenantId;
-        landlordId = _landlordId;
-        price = _price;
-        createDate = _createDate;
-        facilities = _facilities;
-        roomType = _roomType;
-        hotelType = _hotelType;
-        aroundSite = _aroundSite;
-        startTime = _startTime;
-        leaveTime = _leaveTime;
+        landlordId = _otherIntInfo[0];
+        price = _otherIntInfo[1];
+        createDate = _otherIntInfo[2];
+        facilities = _otherStrInfo[0];
+        roomType = _otherStrInfo[1];
+        hotelType = _otherStrInfo[2];
+        aroundSite = _otherStrInfo[3];
+        startTime = _otherIntInfo[3];
+        leaveTime = _otherIntInfo[4];
         roomNum = _roomNum;
         //   point = _point;
-        roomAddress = _roomAddress;
+        roomAddress = _otherStrInfo[4];
     }
 
 }

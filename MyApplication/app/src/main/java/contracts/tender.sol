@@ -5,32 +5,31 @@ contract Tender {
     uint public orderId;
     uint public tenantId;
     uint public price;
-    string public roomAddress;
+    bytes32 public roomAddress;
     uint public startTime;
     uint public leaveTime;
-    string public roomType;
-    string public hotelType;
+    bytes32 public roomType;
+    bytes32 public hotelType;
     uint8 public roomNum;
     uint public createdAt;
-    string public facilities;
-    string public aroundSite;
+    bytes32 public facilities;
+    bytes32 public aroundSite;
 
-    function Bid(uint _tenderId, uint _orderId, uint _tenantId, uint _price, string _roomAddress,
-        uint _startTime, uint _leaveTime, string _roomType, string _hotelType, uint8 _roomNum,
-        uint _createdAt, string _facilities, string _aroundSite) public {
+    function Tender(uint _tenderId, uint8 _roomNum, bytes32[] _otherStrInfo, uint[] _otherIntInfo)
+    public {
         tenderId = _tenderId;
-        orderId = _orderId;
-        tenantId = _tenantId;
-        price = _price;
-        roomAddress = _roomAddress;
-        startTime = _startTime;
-        leaveTime = _leaveTime;
-        roomType = _roomType;
-        hotelType = _hotelType;
+        orderId = _otherIntInfo[0];
+        tenantId = _otherIntInfo[1];
+        price = _otherIntInfo[2];
+        roomAddress = _otherStrInfo[0];
+        startTime = _otherIntInfo[3];
+        leaveTime = _otherIntInfo[4];
+        roomType = _otherStrInfo[1];
+        hotelType = _otherStrInfo[2];
         roomNum = _roomNum;
-        createdAt = _createdAt;
-        facilities = _facilities;
-        aroundSite = _aroundSite;
+        createdAt = _otherIntInfo[5];
+        facilities = _otherStrInfo[3];
+        aroundSite = _otherStrInfo[4];
     }
 
 }
